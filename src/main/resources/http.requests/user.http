@@ -1,0 +1,29 @@
+### Retrieve all users
+GET http://localhost:8080/api/users
+
+### Retrieve a user by ID
+GET http://localhost:8080/api/users/1
+
+### Create a new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "phone": "123-456-7890",
+  "idCard": "ID123458"
+}
+
+### Update an existing user
+PUT http://localhost:8080/api/users/352
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "phone": "987-654-3210"
+}
+
+### Delete a user by ID
+DELETE http://localhost:8080/api/users/352

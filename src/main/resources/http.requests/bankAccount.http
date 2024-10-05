@@ -1,0 +1,41 @@
+### Create a new bank account
+POST http://localhost:8080/api/bank/create
+Content-Type: application/json
+
+{
+  "accountHolderName": "John Doe",
+  "balance": 1000.0,
+  "userId": 352
+}
+
+### Deposit into an account
+POST http://localhost:8080/api/bank/deposit
+Content-Type: application/json
+
+{
+  "accountNumber": "7a397faf-6d03-40e7-a907-1d8de26a60f4",
+  "amount": -500.0
+}
+
+### Withdraw from an account
+POST http://localhost:8080/api/bank/withdraw
+Content-Type: application/json
+
+{
+  "accountNumber": "123456789",
+  "amount": 200.0
+}
+
+### Transfer between accounts
+POST http://localhost:8080/api/bank/transfer
+Content-Type: application/json
+
+{
+  "fromAccount": "123456789",
+  "toAccount": "987654321",
+  "amount": 300.0
+}
+
+### Get the balance of an account
+GET http://localhost:8080/api/bank/balance/123456789
+
