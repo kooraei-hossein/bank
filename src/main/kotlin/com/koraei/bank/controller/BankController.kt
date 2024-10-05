@@ -36,7 +36,7 @@ class BankController(private val bankService: BankService) {
     /**
      * Deposits an amount into the specified bank account.
      *
-     * @param accountNumber The number of the account to deposit into.
+     * @param accountId The number of the account to deposit into.
      * @param amount The amount to deposit.
      */
     @PostMapping("/deposit")
@@ -46,7 +46,7 @@ class BankController(private val bankService: BankService) {
     /**
      * Withdraws an amount from the specified bank account.
      *
-     * @param accountNumber The number of the account to withdraw from.
+     * @param accountId The number of the account to withdraw from.
      * @param amount The amount to withdraw.
      */
     @PostMapping("/withdraw")
@@ -68,10 +68,10 @@ class BankController(private val bankService: BankService) {
     /**
      * Retrieves the balance of the specified bank account.
      *
-     * @param accountNumber The number of the account to check the balance of.
+     * @param accountId The number of the account to check the balance of.
      * @return The current balance of the account.
      */
-    @GetMapping("/balance/{accountNumber}")
-    fun getBalance(@PathVariable accountNumber: String) =
-        bankService.getBalance(accountNumber)
+    @GetMapping("/balance/{accountId}")
+    fun getBalance(@PathVariable accountId: String) =
+        bankService.getBalance(accountId)
 }

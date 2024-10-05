@@ -13,7 +13,7 @@ POST http://localhost:8080/api/bank/deposit
 Content-Type: application/json
 
 {
-  "accountNumber": "7a397faf-6d03-40e7-a907-1d8de26a60f4",
+  "accountId": "7a397faf-6d03-40e7-a907-1d8de26a60f4",
   "amount": -500.0
 }
 
@@ -22,7 +22,7 @@ POST http://localhost:8080/api/bank/withdraw
 Content-Type: application/json
 
 {
-  "accountNumber": "123456789",
+  "accountId": "123456789",
   "amount": 200.0
 }
 

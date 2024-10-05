@@ -1,5 +1,5 @@
 package com.koraei.bank.service
 
 interface TransactionObserver {
-    fun onTransaction(accountNumber: String, transactionType: String, amount: Double)
+    fun onTransaction(accountId: String, transactionType: String, amount: Double)
 }

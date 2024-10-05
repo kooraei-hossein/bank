@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface BankAccountRepository : JpaRepository<BankAccount, String> {
-    fun findByAccountNumber(accountNumber: String): BankAccount?
+    fun findByaccountId(accountId: String): BankAccount?
 }

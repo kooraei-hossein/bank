@@ -46,7 +46,7 @@ class BankService(
     fun createAccount(createAccountRequest: CreateAccountRequest): BankAccountDto {
         val account = BankAccount(
             accountHolderName = createAccountRequest.accountHolderName,
-            accountNumber = UUID.randomUUID().toString(),
+            accountId = UUID.randomUUID().toString(),
             balance = createAccountRequest.balance,
             user = userRepository.findById(createAccountRequest.userId).get()
         )
@@ -59,16 +59,16 @@ class BankService(
      * The operation is executed asynchronously to ensure non-blocking behavior,
      * and concurrency is controlled using a lock.
      *
-     * @param accountNumber The number of the account to deposit into.
+     * @param accountId The number of the account to deposit into.
      * @param amount The amount to deposit.
      */
     fun deposit(request: UpdateBalanceRequest) {
         executorService.submit {
             lock.withLock {
-                val account = accountRepository.findById(request.accountNumber).orElseThrow()
+                val account = accountRepository.findById(request.accountId).orElseThrow()
                 account.balance += request.amount
                 accountRepository.save(account)
-                transactionLogger.onTransaction(request.accountNumber, "Deposit", request.amount)
+                transactionLogger.onTransaction(request.accountId, "Deposit", request.amount)
             }
         }
     }
@@ -79,18 +79,18 @@ class BankService(
      * The operation is executed asynchronously, and concurrency is handled using a lock.
      * If there are insufficient funds, an exception is thrown.
      *
-     * @param accountNumber The number of the account to withdraw from.
+     * @param accountId The number of the account to withdraw from.
      * @param amount The amount to withdraw.
      * @throws GeneralException If there are insufficient funds in the account.
      */
     fun withdraw(request: UpdateBalanceRequest) {
         executorService.submit {
             lock.withLock {
-                val account = accountRepository.findById(request.accountNumber).orElseThrow()
+                val account = accountRepository.findById(request.accountId).orElseThrow()
                 if (account.balance >= request.amount) {
                     account.balance -= request.amount
                     accountRepository.save(account)
-                    transactionLogger.onTransaction(request.accountNumber, "Withdrawal", request.amount)
+                    transactionLogger.onTransaction(request.accountId, "Withdrawal", request.amount)
                 } else {
                     throw GeneralException("message.bank.transaction.funds")
                 }
@@ -129,11 +129,11 @@ class BankService(
     /**
      * Retrieves the balance of a specified bank account.
      *
-     * @param accountNumber The number of the account to check the balance of.
+     * @param accountId The number of the account to check the balance of.
      * @return The current balance of the account, or 0.0 if the account is not found.
      */
-    fun getBalance(accountNumber: String): Double {
-        return accountRepository.findByAccountNumber(accountNumber)?.balance ?: 0.0
+    fun getBalance(accountId: String): Double {
+        return accountRepository.findByaccountId(accountId)?.balance ?: 0.0
     }
 }
 

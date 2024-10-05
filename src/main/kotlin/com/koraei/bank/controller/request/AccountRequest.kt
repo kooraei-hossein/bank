@@ -11,7 +11,7 @@ data class CreateAccountRequest(
 )
 
 data class UpdateBalanceRequest(
-    var accountNumber: String,
+    var accountId: String,
     @field:Positive
     var amount: Double,
 

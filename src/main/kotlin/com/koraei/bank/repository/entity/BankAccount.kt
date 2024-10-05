@@ -10,7 +10,7 @@ import java.time.LocalDateTime
  * This class is mapped to the "bank_account" table in the database and contains fields
  * such as the account number, account holder's name, balance, and a reference to the associated user.
  *
- * @param accountNumber The unique identifier for the bank account.
+ * @param accountId The unique identifier for the bank account.
  * @param updatedAt The timestamp of the last update to the account.
  * @param accountHolderName The name of the account holder.
  * @param balance The current balance of the account.
@@ -21,7 +21,7 @@ import java.time.LocalDateTime
 data class BankAccount(
 
     @Id
-    var accountNumber: String,
+    var accountId: String,
 
     @Column(nullable = false)
     var updatedAt: LocalDateTime = LocalDateTime.now(),
@@ -47,7 +47,7 @@ data class BankAccount(
      */
     fun toDto(): BankAccountDto {
         return BankAccountDto(
-            accountNumber = accountNumber,
+            accountId = accountId,
             accountHolderName = accountHolderName,
             balance = balance,
             user = user.toDto()

@@ -17,8 +17,8 @@ class TransactionLogger : TransactionObserver {
         }
     }
 
-    override fun onTransaction(accountNumber: String, transactionType: String, amount: Double) {
-        val logMessage = "Account: $accountNumber | Type: $transactionType | Amount: $amount"
+    override fun onTransaction(accountId: String, transactionType: String, amount: Double) {
+        val logMessage = "Account: $accountId | Type: $transactionType | Amount: $amount"
         logger.info(logMessage)
         FileWriter(logFile, true).use {
             it.write("$logMessage\n")
