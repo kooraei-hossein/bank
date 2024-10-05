@@ -3,6 +3,9 @@ Simplified Banking System
 
 This is a simplified banking system implemented in Kotlin using Spring Boot, Hibernate, and PostgreSQL. The system supports multiple user accounts and provides functionalities such as account creation, deposits, withdrawals, fund transfers, and balance inquiries. The application is designed with thread safety in mind, ensuring that concurrent transactions are handled effectively.
 
+*** This project needs tests, but lack of time made me send it quickly ***
+
+
 Table of Contents
 -----------------
 
