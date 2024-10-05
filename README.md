@@ -52,10 +52,6 @@ Getting Started
 
 1.  **Clone the repository**:
 
-    bash
-
-    Copy code
-
     `git clone https://github.com/kooraei-hossein/bank.git
     cd bank`
 
